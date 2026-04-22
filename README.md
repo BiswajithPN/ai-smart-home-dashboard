@@ -4,8 +4,8 @@
   <img src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&q=80&w=1200" alt="Nexus Home Cover" width="100%"/>
 </p>
 
-## 🏆 Award-Winning Innovation
-**Runner Prize @ ZYNEX '24 (PSNA College of Engineering & Technology)**
+## 🏅 Recognition & Participation
+**Participated and won the Runner Prize at ZYNEX '24 — National Level Technical Symposium, PSNA College of Engineering & Technology, Dindigul.**
 
 Nexus Home is a high-end, futuristic smart home control interface designed with a focus on **Cosmic Aesthetics** and **Ambient Intelligence**. Built entirely with pure web technologies, it pushes the boundaries of what's possible with Vanilla JavaScript and Modern CSS.
 
