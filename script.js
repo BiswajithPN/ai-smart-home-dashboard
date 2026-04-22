@@ -223,6 +223,7 @@ function initAll() {
   initMood();
   initBrightness();
   initMedia();
+  initNetwork();
 }
 
 /* ══════════ COSMIC QUIZ LOGIC ══════════ */
@@ -1074,7 +1075,7 @@ function buildInsights() {
   const container = $('#aiInsights');
   if (!container) return;
   container.innerHTML = '';
-  const shuffled = [...DATA.insights].sort(()=>Math.random()-0.5).slice(0,4);
+  const shuffled = [...DATA.insights].sort(()=>Math.random()-0.5).slice(0, 6);
   shuffled.forEach(([ico, text], i) => {
     const el = document.createElement('div');
     el.className = 'ai-item';
@@ -1206,4 +1207,15 @@ function initMedia() {
   
   // Start paused
   vizBars.forEach(bar => bar.style.animationPlayState = 'paused');
+}
+
+/* ══════════ NETWORK INTELLIGENCE ══════════ */
+function initNetwork() {
+  const speedEl = $('#netSpeed');
+  if (!speedEl) return;
+
+  setInterval(() => {
+    const speed = 800 + Math.round(Math.random() * 50);
+    speedEl.innerHTML = `${speed} <small>Mbps</small>`;
+  }, 3000);
 }
