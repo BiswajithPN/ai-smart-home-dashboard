@@ -263,6 +263,8 @@ ul, ol { list-style: none; }
 }
 .nav-wordmark em { font-style: normal; color: var(--a1); }
 
+[data-theme="light"] .nav-wordmark em { color: #2B8FFF; } /* Slightly darker blue for contrast */
+
 .nav-links {
   display: flex; gap: 2px; flex: 1; justify-content: center;
 }
@@ -397,9 +399,10 @@ ul, ol { list-style: none; }
   display: flex; flex-direction: column;
   justify-content: flex-start;
   padding: 160px 60px 60px;
-  background: radial-gradient(circle at 20% 30%, rgba(155,113,255,0.05) 0%, transparent 40%),
-              radial-gradient(circle at 80% 70%, rgba(79,172,254,0.05) 0%, transparent 40%),
-              rgba(5,7,15,1);
+  background: radial-gradient(circle at 20% 30%, rgba(155,113,255,0.08) 0%, transparent 40%),
+              radial-gradient(circle at 80% 70%, rgba(79,172,254,0.08) 0%, transparent 40%),
+              var(--bg);
+  transition: background 0.4s var(--ease-out);
 }
 
 .nebula {
@@ -414,6 +417,11 @@ ul, ol { list-style: none; }
 .n2 { width: 600px; height: 600px; bottom: -100px; left: -100px; background: radial-gradient(circle, rgba(155,113,255,0.12), transparent 80%); animation-delay: -5s; animation-duration: 25s; }
 .n3 { width: 500px; height: 500px; top: 20%; left: 20%; background: radial-gradient(circle, rgba(0,245,196,0.1), transparent 80%); animation-delay: -10s; animation-duration: 18s; }
 .n4 { width: 250px; height: 250px; bottom: 20%; right: 10%; background: radial-gradient(circle, rgba(255,140,66,0.07), transparent 70%); animation-delay: -3s; animation-duration: 20s; }
+
+[data-theme="light"] .nebula {
+  mix-blend-mode: multiply;
+  opacity: 0.6;
+}
 
 @keyframes nebulaFloat {
   0%,100% { transform: translate(0,0) scale(1); }
@@ -432,6 +440,11 @@ ul, ol { list-style: none; }
   position: absolute; border-radius: 50%;
   background: white;
   animation: starTwinkle var(--tw-dur, 3s) var(--tw-delay, 0s) ease-in-out infinite;
+}
+
+[data-theme="light"] .star {
+  background: var(--a1);
+  opacity: 0.4;
 }
 @keyframes starTwinkle {
   0%,100% { opacity: var(--base-op, 0.3); transform: scale(1); }
@@ -499,8 +512,12 @@ ul, ol { list-style: none; }
   line-height: 1.1;
   letter-spacing: -0.04em;
   color: var(--text);
-  text-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  text-shadow: 0 10px 30px rgba(0,0,0,0.1);
   text-transform: uppercase;
+}
+
+[data-theme="dark"] .ht-line {
+  text-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 
 .ht-gradient {
