@@ -1,7 +1,7 @@
 # ◈ NEXUS HOME — Cosmic Smart Dashboard
 
 <p align="center">
-  <img src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&q=80&w=1200" alt="Nexus Home Cover" width="100%"/>
+  <img src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&q=80&w=1200" alt="Nexus Home Management Interface" width="100%"/>
 </p>
 
 ## 🏅 Recognition & Participation
