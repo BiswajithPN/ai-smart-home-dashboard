@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>NEXUS HOME — Cosmic Smart Living</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ═══ SVG DEFINITIONS ═══ -->
+<svg style="width:0;height:0;position:absolute;" aria-hidden="true">
+  <defs>
+    <linearGradient id="loaderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="var(--a1)"/>
+      <stop offset="100%" stop-color="var(--a2)"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+</svg>
+
+<!-- ═══ LOADER ═══ -->
+<div id="loader" class="loader">
+  <div class="loader-cosmos">
+    <canvas id="loaderCanvas"></canvas>
+  </div>
+  <div class="loader-core">
+    <svg class="loader-ring-svg" viewBox="0 0 120 120">
+      <circle class="lr-track" cx="60" cy="60" r="52"/>
+      <circle class="lr-fill" cx="60" cy="60" r="52" id="loaderRingFill"/>
+    </svg>
+    <div class="loader-logo-wrap">
+      <svg class="loader-logo-svg" viewBox="0 0 40 40">
+        <circle class="ll-circle" cx="20" cy="20" r="18"/>
+        <path class="ll-diamond" d="M20 6 L34 20 L20 34 L6 20 Z"/>
+        <circle class="ll-core" cx="20" cy="20" r="4"/>
+      </svg>
+    </div>
+  </div>
+  <div class="loader-text">
+    <span class="loader-brand">NEXUS HOME</span>
+    <span class="loader-status" id="loaderStatus">Initializing systems...</span>
+  </div>
+  <div class="loader-bar-wrap"><div class="loader-bar" id="loaderBar"></div></div>
+</div>
+
+
+
+<!-- ═══ SCROLL PROGRESS ═══ -->
+<div class="scroll-progress-bar" id="scrollBar"></div>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav id="navbar" class="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <svg viewBox="0 0 36 36" class="nav-logo-svg">
+        <circle cx="18" cy="18" r="16" stroke="var(--a1)" stroke-width="1.2" fill="none" class="nl-ring"/>
+        <path d="M18 4 L32 18 L18 32 L4 18 Z" fill="var(--a1)" opacity="0.15" class="nl-diamond"/>
+        <path d="M18 4 L32 18 L18 32 L4 18 Z" fill="none" stroke="var(--a1)" stroke-width="1" class="nl-diamond-stroke"/>
+        <circle cx="18" cy="18" r="3.5" fill="var(--a1)" class="nl-core"/>
+      </svg>
+      <span class="nav-wordmark">NEXUS <em>HOME</em></span>
+    </div>
+
+    <ul class="nav-links" role="list">
+      <li><a href="#hero" class="nl active" data-section="hero">Overview</a></li>
+      <li><a href="#control" class="nl" data-section="control">Control</a></li>
+      <li><a href="#energy" class="nl" data-section="energy">Energy</a></li>
+      <li><a href="#security" class="nl" data-section="security">Security</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <div class="nav-live-pill">
+        <span class="live-dot"></span>
+        <span id="liveTime">00:00</span>
+      </div>
+      <button id="themeBtn" class="nav-icon-btn" aria-label="Toggle theme" title="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke-linecap="round"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <div class="nav-avatar">NH</div>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+  <!-- Nebula orbs (move these for global feel if desired, but keeping them for now) -->
+  <div class="nebula n1"></div>
+  <div class="nebula n2"></div>
+  <div class="nebula n3"></div>
+  <div class="nebula n4"></div>
+
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow" data-reveal="up" data-delay="0">
+        <span class="eyebrow-dot"></span>
+        <span>AI-Powered · Smart Living · v2.4</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="ht-line" data-reveal="up" data-delay="100">Your home,</span>
+        <span class="ht-line ht-gradient" data-reveal="up" data-delay="200">intelligently</span>
+        <span class="ht-line ht-gradient-2" data-reveal="up" data-delay="300">alive.</span>
+      </h1>
+
+      <p class="hero-desc" data-reveal="up" data-delay="400">
+        Synthesizing <span id="h-devices">0</span> active systems &nbsp;·&nbsp;
+        Ambient <span id="h-temp">—</span>°C &nbsp;·&nbsp;
+        Fluent at <span id="h-watts">—</span>W
+      </p>
+
+      <div class="hero-clock-card" data-reveal="up" data-delay="500">
+        <div class="hcc-time" id="heroTime">00:00:00</div>
+        <div class="hcc-date" id="heroDate">—</div>
+        <div class="hcc-weather">
+          <span class="hcc-weather-icon" id="wIcon">◈</span>
+          <span id="wText">Loading weather...</span>
+        </div>
+      </div>
+
+      <div class="hero-cta-row" data-reveal="up" data-delay="600">
+        <button class="btn-primary" onclick="document.getElementById('control').scrollIntoView({behavior:'smooth'})">
+          <span>Control Hub</span>
+          <svg viewBox="0 0 24 24" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="btn-ghost">View Analytics</button>
+      </div>
+    </div>
+
+    <div class="hero-right" data-reveal="scale" data-delay="300">
+      <div class="hero-orb-container" id="heroOrb">
+        <!-- Orbital rings -->
+        <div class="orb-ring ring-1"></div>
+        <div class="orb-ring ring-2"></div>
+        <div class="orb-ring ring-3"></div>
+
+        <!-- Center house orb -->
+        <div class="orb-center">
+          <svg class="house-svg" viewBox="0 0 220 200" fill="none">
+            <defs>
+              <linearGradient id="hg1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="var(--a1)" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="var(--a2)" stop-opacity="0.1"/>
+              </linearGradient>
+              <filter id="hglow">
+                <feGaussianBlur stdDeviation="3" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <!-- House body -->
+            <rect x="35" y="95" width="150" height="95" rx="4" fill="url(#hg1)" stroke="var(--a1)" stroke-width="1" opacity="0.8"/>
+            <!-- Roof -->
+            <path d="M20 100 L110 25 L200 100 Z" fill="var(--a1)" opacity="0.12" stroke="var(--a1)" stroke-width="1.2"/>
+            <!-- Door -->
+            <rect x="85" y="143" width="50" height="47" rx="3" fill="var(--a1)" opacity="0.2" stroke="var(--a1)" stroke-width="0.8"/>
+            <circle cx="127" cy="167" r="2.5" fill="var(--a1)"/>
+            <!-- Windows -->
+            <rect x="48" y="112" width="38" height="28" rx="2" fill="var(--a1)" opacity="0.15" stroke="var(--a1)" stroke-width="0.8" class="w-glow"/>
+            <rect x="134" y="112" width="38" height="28" rx="2" fill="var(--a1)" opacity="0.15" stroke="var(--a1)" stroke-width="0.8" class="w-glow"/>
+            <!-- Window cross -->
+            <line x1="67" y1="112" x2="67" y2="140" stroke="var(--a1)" stroke-width="0.5" opacity="0.4"/>
+            <line x1="48" y1="126" x2="86" y2="126" stroke="var(--a1)" stroke-width="0.5" opacity="0.4"/>
+            <line x1="153" y1="112" x2="153" y2="140" stroke="var(--a1)" stroke-width="0.5" opacity="0.4"/>
+            <line x1="134" y1="126" x2="172" y2="126" stroke="var(--a1)" stroke-width="0.5" opacity="0.4"/>
+            <!-- Chimney -->
+            <rect x="148" y="48" width="20" height="38" rx="2" fill="url(#hg1)" stroke="var(--a1)" stroke-width="0.8"/>
+            <!-- Antenna -->
+            <line x1="110" y1="25" x2="110" y2="6" stroke="var(--a1)" stroke-width="1.2"/>
+            <circle cx="110" cy="4" r="2.5" fill="var(--a1)" class="antenna-pulse"/>
+            <!-- Ground line -->
+            <line x1="10" y1="190" x2="210" y2="190" stroke="var(--a1)" stroke-width="0.5" opacity="0.3"/>
+          </svg>
+        </div>
+
+        <!-- Orbiting satellites -->
+        <div class="orb-satellite s1">
+          <div class="sat-card">⚡ <span id="orbW">—W</span></div>
+        </div>
+        <div class="orb-satellite s2">
+          <div class="sat-card">🌡 <span id="orbT">—°C</span></div>
+        </div>
+        <div class="orb-satellite s3">
+          <div class="sat-card">🔒 <span id="orbS">Armed</span></div>
+        </div>
+        <div class="orb-satellite s4">
+          <div class="sat-card">💡 <span id="orbL">— on</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll-cue">
+    <div class="scroll-mouse">
+      <div class="scroll-wheel"></div>
+    </div>
+    <span>Scroll to explore</span>
+  </div>
+</section>
+
+<!-- ═══ ROOM TABS ═══ -->
+<section class="section-rooms" id="control">
+  <div class="section-container">
+    <div class="section-label" data-reveal="up">CONTROL CENTER</div>
+    <h2 class="section-title" data-reveal="up" data-delay="80">Manage every space</h2>
+
+    <div class="room-tabs-wrap" role="tablist" data-reveal="up" data-delay="160">
+      <button class="rtab active" data-room="living" role="tab">
+        <span class="rtab-icon">⬡</span><span>Living Room</span>
+      </button>
+      <button class="rtab" data-room="bedroom" role="tab">
+        <span class="rtab-icon">◎</span><span>Bedroom</span>
+      </button>
+      <button class="rtab" data-room="kitchen" role="tab">
+        <span class="rtab-icon">◈</span><span>Kitchen</span>
+      </button>
+      <button class="rtab" data-room="garage" role="tab">
+        <span class="rtab-icon">⬟</span><span>Garage</span>
+      </button>
+      <button class="rtab" data-room="garden" role="tab">
+        <span class="rtab-icon">◉</span><span>Garden</span>
+      </button>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BENTO GRID ═══ -->
+<section class="bento-section">
+  <div class="section-container">
+    <div class="bento-grid" id="bentoGrid">
+
+      <!-- LIGHTS (wide) -->
+      <article class="b-card b-wide lights-card" data-reveal="up" data-delay="0">
+        <div class="card-glow-border"></div>
+        <div class="card-inner">
+          <header class="card-head">
+            <div class="card-icon-wrap ci-amber">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="card-title">Smart Lights</h3>
+              <p class="card-sub" id="lightsRoom">Living Room</p>
+            </div>
+            <div class="card-badge badge-amber" id="lightsPower">42W</div>
+          </header>
+
+          <div class="lights-grid" id="lightsGrid"></div>
+
+          <div class="brightness-row">
+            <label class="row-label">Brightness</label>
+            <div class="slider-track-wrap">
+              <input type="range" class="slider-brightness" id="bSlider" min="0" max="100" value="75" aria-label="Brightness"/>
+            </div>
+            <span class="slider-readout" id="bVal">75%</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- TEMPERATURE -->
+      <article class="b-card temp-card" data-reveal="up" data-delay="60">
+        <div class="card-glow-border"></div>
+        <div class="card-inner">
+          <header class="card-head">
+            <div class="card-icon-wrap ci-orange">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <path d="M12 2v10.5M16 16.5a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"/><path d="M8.5 4h-1M8.5 7h-1M8.5 10h-1"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="card-title">Temperature</h3>
+              <p class="card-sub" id="tempModeLabel">Heating</p>
+            </div>
+          </header>
+
+          <div class="temp-gauge-container">
+            <svg class="tg-svg" viewBox="0 0 180 110" id="tgSvg">
+              <path class="tg-track" d="M16 96 A72 72 0 0 1 164 96"/>
+              <path class="tg-fill" id="tgFill" d="M16 96 A72 72 0 0 1 164 96"/>
+              <text class="tg-label" x="16" y="110" text-anchor="middle" font-size="9">16°</text>
+              <text class="tg-label" x="164" y="110" text-anchor="middle" font-size="9">30°</text>
+            </svg>
+            <div class="temp-center">
+              <div class="temp-big" id="tempBig">22</div>
+              <div class="temp-deg">°C</div>
+            </div>
+          </div>
+
+          <div class="temp-ctrl-row">
+            <button class="tc-btn" id="tDn" aria-label="Decrease">−</button>
+            <div class="tc-modes">
+              <button class="tcm active" id="heatBtn">🔥 Heat</button>
+              <button class="tcm" id="coolBtn">❄ Cool</button>
+            </div>
+            <button class="tc-btn" id="tUp" aria-label="Increase">+</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- SECURITY -->
+      <article class="b-card sec-card" data-reveal="up" data-delay="120" id="security">
+        <div class="card-glow-border"></div>
+        <div class="card-inner">
+          <header class="card-head">
+            <div class="card-icon-wrap ci-green">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round">
+                <path d="M12 2L3 6v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-9-4z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="card-title">Security</h3>
+              <p class="card-sub" id="secLabel">System Armed</p>
+            </div>
+            <label class="toggle-switch" aria-label="Arm/Disarm">
+              <input type="checkbox" id="armToggle" role="switch" checked/>
+              <span class="ts-track ts-green"></span>
+            </label>
+          </header>
+
+          <div class="shield-wrap" id="shieldWrap">
+            <div class="shield-pulse-ring r1"></div>
+            <div class="shield-pulse-ring r2"></div>
+            <div class="shield-pulse-ring r3"></div>
+            <svg class="shield-icon" viewBox="0 0 60 60" id="shieldSvg">
+              <path id="shieldBody" d="M30 4L6 14v14c0 14 9.6 26.8 24 30 14.4-3.2 24-16 24-30V14L30 4z" fill="var(--a-green)" fill-opacity="0.12" stroke="var(--a-green)" stroke-width="1.2"/>
+              <path id="shieldCheck" d="M20 30l7 7 13-13" stroke="var(--a-green)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <div class="sensor-list">
+            <div class="sensor-row"><span class="s-dot green"></span><span>Front Door</span><span class="s-status">Secured</span></div>
+            <div class="sensor-row"><span class="s-dot green"></span><span>Back Window</span><span class="s-status">Secured</span></div>
+            <div class="sensor-row"><span class="s-dot" id="motionDot"></span><span>Motion</span><span class="s-status" id="motionStatus">Clear</span></div>
+          </div>
+
+          <div class="event-box">
+            <span class="event-tag">LAST EVENT</span>
+            <span class="event-msg" id="secEvent">No recent activity</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ENERGY (wide) -->
+      <article class="b-card b-wide energy-card" data-reveal="up" data-delay="80" id="energy">
+        <div class="card-glow-border"></div>
+        <div class="card-inner">
+          <header class="card-head">
+            <div class="card-icon-wrap ci-yellow">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="card-title">Energy Monitor</h3>
+              <p class="card-sub">Live consumption</p>
+            </div>
+            <div class="energy-total-display">
+              <span class="etd-num" id="totalW">0</span>
+              <span class="etd-unit">W</span>
+            </div>
+          </header>
+
+          <div class="energy-chart-area">
+            <canvas id="eChart"></canvas>
+          </div>
+
+          <div class="energy-footer">
+            <span class="ef-legend"><span class="ef-dot blue"></span>Today</span>
+            <span class="ef-legend"><span class="ef-dot gray"></span>Yesterday</span>
+            <span class="ef-savings" id="savingsPct">▼ 12% vs yesterday</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- CAMERAS -->
+      <article class="b-card cam-card" data-reveal="up" data-delay="160">
+        <div class="card-glow-border"></div>
+        <div class="card-inner">
+          <header class="card-head">
+            <div class="card-icon-wrap ci-purple">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <rect x="2" y="6" width="15" height="12" rx="2"/><path d="M17 9l5-3v12l-5-3V9z" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="card-title">Cameras</h3>
+              <p class="card-sub">4 feeds active</p>
+            </div>
+          </header>
+
+          <div class="cam-grid">
+            <div class="cam-feed cf1"><div class="cam-scanlines"></div><div class="cam-hud"><span class="cam-live">● LIVE</span><span class="cam-ts" id="ct1"></span></div><span class="cam-name">Front Door</span></div>
+            <div class="cam-feed cf2"><div class="cam-scanlines"></div><div class="cam-hud"><span class="cam-live">● LIVE</span><span class="cam-ts" id="ct2"></span></div><span class="cam-name">Backyard</span></div>
+            <div class="cam-feed cf3"><div class="cam-scanlines"></div><div class="cam-hud"><span class="cam-live">● LIVE</span><span class="cam-ts" id="ct3"></span></div><span class="cam-name">Garage</span></div>
+            <div class="cam-feed cf4"><div class="cam-scanlines"></div><div class="cam-hud"><span class="cam-live">● LIVE</span><span class="cam-ts" id="ct4"></span></div><span class="cam-name">Garden</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- AI INSIGHTS -->
+      <article class="b-card ai-card" data-reveal="up" data-delay="200">
+        <div class="card-glow-border"></div>
+        <div class="card-inner">
+          <header class="card-head">
+            <div class="card-icon-wrap ci-cyan">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="card-title">Nexus AI</h3>
+              <p class="card-sub">Home intelligence</p>
+            </div>
+            <button class="icon-btn" id="refreshAI" aria-label="Refresh insights">↻</button>
+          </header>
+          <div class="ai-insights" id="aiInsights"></div>
+        </div>
+      </article>
+
+      <!-- SCHEDULE (wide) -->
+      <article class="b-card b-wide sched-card" data-reveal="up" data-delay="120">
+        <div class="card-glow-border"></div>
+        <div class="card-inner">
+          <header class="card-head">
+            <div class="card-icon-wrap ci-orange">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="card-title">Smart Schedule</h3>
+              <p class="card-sub">Today's automations</p>
+            </div>
+          </header>
+          <div class="sched-scroll" id="schedScroll"></div>
+        </div>
+      </article>
+
+      <!-- COSMIC QUIZ (NEW FEATURE) -->
+      <article class="b-card quiz-card" data-reveal="up" data-delay="300">
+        <div class="card-glow-border"></div>
+        <div class="card-inner">
+          <header class="card-head">
+            <div class="card-icon-wrap ci-purple">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            </div>
+            <div>
+              <h3 class="card-title">Cosmic IQ</h3>
+              <p class="card-sub">Sustainability Quiz</p>
+            </div>
+          </header>
+          <div id="quizContainer" class="quiz-container">
+            <p id="quizQuestion" class="quiz-q">Loading challenge...</p>
+            <div id="quizOptions" class="quiz-options"></div>
+            <div id="quizResult" class="quiz-res hidden"></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- MOOD SCENES (NEW FEATURE) -->
+      <article class="b-card mood-card" data-reveal="up" data-delay="400">
+        <div class="card-glow-border"></div>
+        <div class="card-inner">
+          <header class="card-head">
+            <div class="card-icon-wrap ci-cyan">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </div>
+            <div>
+              <h3 class="card-title">Ambience</h3>
+              <p class="card-sub">Dynamic Presets</p>
+            </div>
+          </header>
+          <div class="mood-grid">
+            <button class="mood-btn" data-mood="zen">🧘 Zen</button>
+            <button class="mood-btn" data-mood="focus">⚡ Focus</button>
+            <button class="mood-btn" data-mood="party">🎉 Party</button>
+            <button class="mood-btn" data-mood="sleep">🌙 Sleep</button>
+          </div>
+          <div id="moodFeedback" class="mood-feedback">Current mood: <span>Optimal</span></div>
+        </div>
+      </article>
+
+      <!-- MEDIA CONTROL (NEW) -->
+      <article class="b-card media-card" data-reveal="up" data-delay="450">
+        <div class="card-glow-border"></div>
+        <div class="card-inner">
+          <header class="card-head">
+            <div class="card-icon-wrap ci-purple">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M10 8l6 4-6 4V8z"/></svg>
+            </div>
+            <div>
+              <h3 class="card-title">Media Center</h3>
+              <p class="card-sub" id="trackInfo">Stellar Drift • Cosmic Echoes</p>
+            </div>
+          </header>
+          <div class="media-viz" id="mediaViz">
+            <div class="m-bar v1"></div><div class="m-bar v2"></div><div class="m-bar v3"></div><div class="m-bar v4"></div><div class="m-bar v5"></div>
+          </div>
+          <div class="media-controls">
+            <button class="m-btn prev">⏮</button>
+            <button class="m-btn play" id="mediaPlay">▶</button>
+            <button class="m-btn next">⏭</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- AIR QUALITY (NEW) -->
+      <article class="b-card air-card" data-reveal="up" data-delay="500">
+        <div class="card-glow-border"></div>
+        <div class="card-inner">
+          <header class="card-head">
+            <div class="card-icon-wrap ci-cyan">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242M12 12v9m-4-4l4 4 4-4"/></svg>
+            </div>
+            <div>
+              <h3 class="card-title">Air Quality</h3>
+              <p class="card-sub">Healthy • 98% Score</p>
+            </div>
+          </header>
+          <div class="air-metrics">
+            <div class="am-item">
+              <div class="am-label">PM2.5</div>
+              <div class="am-val">12 <small>μg/m³</small></div>
+            </div>
+            <div class="am-item">
+              <div class="am-label">CO2</div>
+              <div class="am-val">412 <small>ppm</small></div>
+            </div>
+            <div class="am-item">
+              <div class="am-label">Humidity</div>
+              <div class="am-val">48 <small>%</small></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div><!-- /bento-grid -->
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="section-container footer-inner">
+    <div class="footer-logo">
+      <span class="nav-wordmark">NEXUS <em>HOME</em></span>
+      <span class="footer-ver">v2.4.1</span>
+    </div>
+    <div class="footer-meta">
+      Last synced: <span id="syncDisplay">Just now</span> &nbsp;·&nbsp; All systems nominal
+    </div>
+    <div class="footer-copy">© 2026 Nexus Home Inc.</div>
+  </div>
+</footer>
+
+<!-- ═══ FLOATING CHATBOT ═══ -->
+<div id="nexusChat" class="nexus-chat">
+  <div class="chat-toggle" id="chatToggle">
+    <div class="chat-particle-wrap">
+      <div class="cp p1"></div><div class="cp p2"></div><div class="cp p3"></div>
+    </div>
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+  </div>
+  
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <div class="ch-info">
+        <div class="ch-bot-ico">◈</div>
+        <div>
+          <div class="ch-name">Nexus AI</div>
+          <div class="ch-status">Online • Intelligence v4.2</div>
+        </div>
+      </div>
+      <button class="ch-close" id="chatClose">✕</button>
+    </div>
+    
+    <div class="chat-body" id="chatBody">
+      <div class="chat-msg bot">
+        <div class="msg-content">Hello! I'm Nexus AI. How can I assist with your smart home today?</div>
+        <div class="msg-ts">Just now</div>
+      </div>
+    </div>
+    
+    <div class="chat-footer">
+      <input type="text" id="chatInput" placeholder="Analyze home systems..." autocomplete="off"/>
+      <button id="chatSend" aria-label="Send message">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
