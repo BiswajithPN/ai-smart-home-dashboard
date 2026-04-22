@@ -97,6 +97,7 @@ function typewrite(el, text, speed = 30) {
 
 /* ══════════ LOADER (Cosmic) ══════════ */
 (function initLoader() {
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   window.scrollTo(0, 0); 
   document.body.style.overflow = 'hidden';
   const loader = $('#loader');
@@ -185,6 +186,7 @@ function typewrite(el, text, speed = 30) {
     if (loader) {
       loader.classList.add('exit');
       document.body.style.overflow = '';
+      window.scrollTo(0, 0);
       setTimeout(() => { if(loader.parentNode) loader.remove(); }, 1000);
     }
     
@@ -208,6 +210,7 @@ function initAll() {
   initTilt();
   initParallax();
   initHeroOrb();
+  initScrollCue();
   initRoomTabs();
   buildLightsGrid('living');
   initTemperature();
@@ -224,6 +227,43 @@ function initAll() {
   initBrightness();
   initMedia();
   initNetwork();
+  initMobileMenu();
+}
+
+/* ══════════ MOBILE MENU ══════════ */
+function initMobileMenu() {
+  const menuBtn = $('#menuBtn');
+  const mobileMenu = $('#mobileMenu');
+  const menuLinks = $$('.mobile-nav-link');
+
+  if (!menuBtn || !mobileMenu) return;
+
+  const toggleMenu = () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    menuBtn.textContent = isOpen ? '✕' : '☰';
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  };
+
+  menuBtn.addEventListener('click', toggleMenu);
+
+  menuLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').substring(1);
+      const targetEl = document.getElementById(targetId);
+      
+      toggleMenu();
+      
+      if (targetEl) {
+        setTimeout(() => {
+          window.scrollTo({
+            top: targetEl.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }, 300);
+      }
+    });
+  });
 }
 
 /* ══════════ COSMIC QUIZ LOGIC ══════════ */
@@ -753,6 +793,21 @@ function initHeroOrb() {
   hero?.addEventListener('mouseleave', () => {
     orb.style.transition = 'transform 0.8s cubic-bezier(0.34,1.56,0.64,1)';
     orb.style.transform = 'perspective(900px) rotateX(0) rotateY(0)';
+  });
+}
+
+/* ══════════ SCROLL CUE ══════════ */
+function initScrollCue() {
+  const cue = $('#scrollCue');
+  if (!cue) return;
+  cue.addEventListener('click', () => {
+    const target = $('#control');
+    if (target) {
+      window.scrollTo({
+        top: target.offsetTop - 80,
+        behavior: 'smooth'
+      });
+    }
   });
 }
 

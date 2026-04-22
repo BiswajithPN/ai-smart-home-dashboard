@@ -60,6 +60,7 @@
 <!-- ═══ NAVBAR ═══ -->
 <nav id="navbar" class="navbar">
   <div class="nav-container">
+    <button id="menuBtn" class="nav-menu-btn" aria-label="Open menu">☰</button>
     <div class="nav-logo">
       <svg viewBox="0 0 36 36" class="nav-logo-svg">
         <circle cx="18" cy="18" r="16" stroke="var(--a1)" stroke-width="1.2" fill="none" class="nl-ring"/>
@@ -91,7 +92,16 @@
   </div>
 </nav>
 
+<!-- ═══ MOBILE MENU OVERLAY ═══ -->
+<div id="mobileMenu" class="mobile-menu-overlay">
+  <a href="#hero" class="mobile-nav-link">Overview</a>
+  <a href="#control" class="mobile-nav-link">Control</a>
+  <a href="#energy" class="mobile-nav-link">Energy</a>
+  <a href="#security" class="mobile-nav-link">Security</a>
+</div>
+
 <!-- ═══ HERO ═══ -->
+<section class="hero-section" id="hero">
   <!-- Nebula orbs (move these for global feel if desired, but keeping them for now) -->
   <div class="nebula n1"></div>
   <div class="nebula n2"></div>
@@ -197,12 +207,12 @@
     </div>
   </div>
 
-  <div class="hero-scroll-cue">
+  <button class="hero-scroll-cue" id="scrollCue" aria-label="Scroll to content">
     <div class="scroll-mouse">
       <div class="scroll-wheel"></div>
     </div>
-    <span>Scroll to explore</span>
-  </div>
+    <span>Explore Hub</span>
+  </button>
 </section>
 
 <!-- ═══ ROOM TABS ═══ -->
@@ -226,7 +236,6 @@
       </button>
       <button class="rtab" data-room="garden" role="tab">
         <span class="rtab-icon">◉</span><span>Garden</span>
-      </button>
       </button>
     </div>
   </div>
