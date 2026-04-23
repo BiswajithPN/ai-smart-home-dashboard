@@ -49,7 +49,7 @@ Nexus Home is a high-end, futuristic smart home control interface designed with 
 A huge thanks to the team that made this project a prize-winner!
 
 *   **Biswajith P N** ([@BiswajithPN](https://github.com/BiswajithPN)) — Lead Developer & UI Architect
-*   **Sailavishnu** — Core Contributor
+*   **Sailavishnu G** — Core Contributor
 
 ---
 
